@@ -78,7 +78,7 @@ function displayProduct(){
                         <span>marque : ${item.marque}</span>
                     </div>
                     <div class="product-item-actions">
-                        <button class="add-to-cart">add to card</button>
+                        <button class="add-to-cart" >add to card</button>
                         <i class="favorite fa fa-heart"></i>
 
                     </div>
@@ -87,4 +87,16 @@ function displayProduct(){
     })
     productsDom.innerHTML=productsUI
 }
+
 displayProduct()
+
+let addToCartBtn=document.querySelector('.add-to-cart')
+addToCartBtn.addEventListener('click',checkloginUser)
+function checkloginUser(e){
+    e.preventDefault()
+    if(localStorage.getItem("username")){
+        window.location="cartProduct.html"
+    }else{
+        window.location='login.html'
+    }
+}
