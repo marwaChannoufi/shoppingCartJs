@@ -88,3 +88,43 @@ nav li a{
 .section-form form input[type="submit"]:hover{
     opacity: 0.5;
 }
+/* ================== home section ======================*/
+.products{
+width: 60%;
+margin: 10px 0 ;
+
+}
+.product-item{
+    border: 1px solid gray;
+display: flex;  
+width: 100%;  
+margin: 10px  0;
+height: 250px;
+
+}
+.product-item-img{
+    width: 30%;
+
+    margin-right: 10px;
+}
+.product-item-actions{
+    flex: 1;
+    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.product-item-actions   .add-to-cart{ 
+    display: block;
+    margin-left: auto;
+    background-color:rgb(253, 212, 251);
+    color: teal;
+    border: 0;
+    padding: 10px 20px;
+    font-size: 16px;
+
+    cursor: pointer;
+}
+.product-item-actions  .favorite{
+
+}
