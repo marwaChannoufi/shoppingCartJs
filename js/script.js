@@ -21,7 +21,7 @@ let username=localStorage.getItem("username")
 
 
 //  display products 
-let products=[
+var products=[
     {
         id:"1",
         title:"image number 1",
@@ -78,7 +78,7 @@ function displayProduct(){
                         <span>marque : ${item.marque}</span>
                     </div>
                     <div class="product-item-actions">
-                        <button class="add-to-cart" >add to card</button>
+                        <button class="add-to-cart" onclick="addedToCart(${item.id})">add to card</button>
                         <i class="favorite fa fa-heart"></i>
 
                     </div>
@@ -89,13 +89,18 @@ function displayProduct(){
 }
 
 displayProduct()
+ 
+function addedToCart(id){
+   console.log(id)
+    let choosenItem  = products.find( (item)=> item.id == id)
+    console.log(choosenItem );
+     
+} 
 
-let addToCartBtn=document.querySelector('.add-to-cart')
-addToCartBtn.addEventListener('click',checkloginUser)
-function checkloginUser(e){
-    e.preventDefault()
+function checkloginUser(){
+    
     if(localStorage.getItem("username")){
-        window.location="cartProduct.html"
+        console.log("added to list items in cart");
     }else{
         window.location='login.html'
     }
