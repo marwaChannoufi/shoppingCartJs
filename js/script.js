@@ -25,46 +25,25 @@ let username=localStorage.getItem("username")
 //  display products 
 var products=[
     {
-        id:"1",
-        title:"image number 1",
-        marque:"marque",
-        imageUrl:'images/1.jfif'
+        id:"1", title:"image number 1", marque:"marque", imageUrl:'images/1.jfif'
     },
     {
-        id:"2",
-        title:"image number 2",
-        marque:"marque",
-        imageUrl:'images/2.jfif'
+        id:"2", title:"image number 2", marque:"marque", imageUrl:'images/2.jfif'
     },
     {
-        id:"3",
-        title:"image number 3",
-        marque:"marque",
-        imageUrl:'images/3.jfif'
+        id:"3", title:"image number 3", marque:"marque", imageUrl:'images/3.jfif'
     },
     {
-        id:"4",
-        title:"image number 4",
-        marque:"marque",
-        imageUrl:'images/4.jfif'
+        id:"4", title:"image number 4", marque:"marque", imageUrl:'images/4.jfif'
     },
     {
-        id:"5",
-        title:"image number 5",
-        marque:"marque",
-        imageUrl:'images/5.jfif'
+        id:"5", title:"image number 5", marque:"marque", imageUrl:'images/5.jfif'
     },
     {
-        id:"6",
-        title:"image number 6",
-        marque:"marque",
-        imageUrl:'images/6.jfif'
+        id:"6", title:"image number 6", marque:"marque", imageUrl:'images/6.jfif'
     },
     {
-        id:"7",
-        title:"image number 7",
-        marque:"marque",
-        imageUrl:'images/7.jfif'
+        id:"7", title:"image number 7", marque:"marque", imageUrl:'images/7.jfif'
     },
 
 ]
@@ -96,6 +75,12 @@ function addedToCart(id){
    console.log(id)
     let choosenItem  = products.find( (item)=> item.id == id)
     console.log(choosenItem );
+    let listProductsBag=document.querySelector('#list-products div')
+
+    listProductsBag.innerHTML += `<p> ${choosenItem.title} </p>`
+    let numberProductsInBag= document.querySelectorAll('#list-products div p')
+    let badgeNotification= document.querySelector('#badge')
+    badgeNotification.innerHTML= numberProductsInBag.length 
      
 } 
 
@@ -109,5 +94,13 @@ function checkloginUser(){
 }
 cartShopping.addEventListener('click',(e)=>{
 e.preventDefault()
-listProducts.style.display="block"
+ 
+ 
+
+
+    if(listProducts.style.display=="block")
+{listProducts.style.display="none"}
+else{
+    listProducts.style.display="block"
+}
 })
