@@ -36,6 +36,45 @@ header{
 nav ul#user-info{
     display: none;
 }
+nav ul#user-info li{
+    position: relative;
+    margin:0 5px ;
+}
+nav ul#user-info li i{
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+}
+nav ul#user-info li .badge{
+    width: 20px;
+    height: 20px;
+    background: tomato  ;
+    color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    left: 24px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 20px;
+}
+nav ul#user-info .list-products{
+    position: absolute;
+    width: 230px;
+    transform: translate(-50%, 0);
+    border: 1px solid greenyellow;
+    top: 75px;
+    padding: 10px;
+    background: #eaeaea;
+    display: none;
+}
+nav ul#user-info .list-products a{
+    color: teal;
+    text-decoration: none;
+    text-align: center;
+    background: rgb(253, 212, 251);
+    margin: 10px 0;
+}
 nav li a{
     color:rgb(204, 250, 250);
     display: block;

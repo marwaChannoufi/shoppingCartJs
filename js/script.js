@@ -3,6 +3,8 @@ let userInfo=document.querySelector("#user-info")
 let links=document.querySelector("#links")
 let logOut=document.querySelector("#logOut")
 let productsDom=document.querySelector('.products')
+let cartShopping=document.querySelector('#cart-shopping')
+let listProducts= document.querySelector('#list-products')
 
 let username=localStorage.getItem("username")
  if(username){
@@ -105,3 +107,7 @@ function checkloginUser(){
         window.location='login.html'
     }
 }
+cartShopping.addEventListener('click',(e)=>{
+e.preventDefault()
+listProducts.style.display="block"
+})
