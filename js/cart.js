@@ -1,6 +1,7 @@
 
 
 let productsDom=document.querySelector('.products')
+let noProductsDom=document.querySelector('.no-products')
 
 
 // if(productsInCart){
@@ -9,26 +10,33 @@ let productsDom=document.querySelector('.products')
 //     drawCartProductsUi(items)
 //     }
 function drawCartProductsUi(productsAll = []){
+    if(JSON.parse(localStorage.getItem('arrayItems')).length===0){
+        
+        noProductsDom.innerHTML = 'no productin cart'
+    }
+    
+        let products= JSON.parse(localStorage.getItem('arrayItems')) || productsAll;
+        // console.log(products)
+        let productsUI=products.map(item=>{
+            return`
+            <div class="product-item">
+                        <img src="images/${item.id}.jfif" alt="image1" srcset="" class="product-item-img">
+                        <div class="product-item-des">
+                            <h2>${item.title}</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                            <span>marque : ${item.marque}</span>
+                        </div>
+                        <div class="product-item-actions">
+                            <button class="add-to-cart" onclick="removeFromCart(${item.id})">remove item</button>
+                            
+                        </div>
+            </div>
+            `
+        })
+        productsDom.innerHTML =productsUI
+    
 
-    let products= JSON.parse(localStorage.getItem('arrayItems')) || productsAll;
-    // console.log(products)
-    let productsUI=products.map(item=>{
-        return`
-        <div class="product-item">
-                    <img src="images/${item.id}.jfif" alt="image1" srcset="" class="product-item-img">
-                    <div class="product-item-des">
-                        <h2>${item.title}</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        <span>marque : ${item.marque}</span>
-                    </div>
-                    <div class="product-item-actions">
-                        <button class="add-to-cart" onclick="removeFromCart(${item.id})">remove item</button>
-                        
-                    </div>
-        </div>
-        `
-    })
-    productsDom.innerHTML =productsUI
+   
 }
 drawCartProductsUi()
 
