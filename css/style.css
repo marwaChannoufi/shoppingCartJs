@@ -128,8 +128,16 @@ nav li a{
     opacity: 0.5;
 }
 /* ================== home section ======================*/
+/* .product-style{
+    display: flex;
+    flex-wrap: wrap;
+
+} */
+/* .home-section{
+    display: flex;
+} */
 .products{
-width: 60%;
+width: 50%;
 margin: 10px 0 ;
 
 }
@@ -143,8 +151,14 @@ height: 250px;
 }
 .product-item-img{
     width: 30%;
-
+    
     margin-right: 10px;
+}
+.product-item-des a{
+text-decoration: none;
+color: #333;
+display: block;
+font-size: 24px;
 }
 .product-item-actions{
     flex: 1;

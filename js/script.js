@@ -16,7 +16,8 @@ function displayProduct(){
         <div class="product-item">
                     <img src="images/${item.id}.jfif" alt="image1" srcset="" class="product-item-img">
                     <div class="product-item-des">
-                        <h2>   ${item.title}</h2>
+                    <a href="cartDetails.html"><h2>   ${item.title}</h2></a>
+                        
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                         <span>marque : ${item.marque}</span>
                     </div>
