@@ -1,52 +1,14 @@
-let userDom =document.querySelector("#user")
-let userInfo=document.querySelector("#user-info")
-let links=document.querySelector("#links")
-let logOut=document.querySelector("#logOut")
+
 let productsDom=document.querySelector('.products')
+
 let cartShopping=document.querySelector('#cart-shopping')
 let listProducts= document.querySelector('#list-products')
 
-let username=localStorage.getItem("username")
- if(username){
-    links.remove()
-    userInfo.style.display="flex"
-    userDom.innerHTML=localStorage.getItem("username")
- }
-
- logOut.addEventListener('click',(e)=>{
-     e.preventDefault()
-     setTimeout(()=>{
-         localStorage.clear()
-         window.location="register.html"
-     },1500)
- })
 
 
 //  display products 
-var products=[
-    {
-        id:"1", title:"image number 1", marque:"marque", imageUrl:'images/1.jfif'
-    },
-    {
-        id:"2", title:"image number 2", marque:"marque", imageUrl:'images/2.jfif'
-    },
-    {
-        id:"3", title:"image number 3", marque:"marque", imageUrl:'images/3.jfif'
-    },
-    {
-        id:"4", title:"image number 4", marque:"marque", imageUrl:'images/4.jfif'
-    },
-    {
-        id:"5", title:"image number 5", marque:"marque", imageUrl:'images/5.jfif'
-    },
-    {
-        id:"6", title:"image number 6", marque:"marque", imageUrl:'images/6.jfif'
-    },
-    {
-        id:"7", title:"image number 7", marque:"marque", imageUrl:'images/7.jfif'
-    },
 
-]
+
 
 function displayProduct(){
     let productsUI=products.map(item=>{
@@ -70,17 +32,47 @@ function displayProduct(){
 }
 
 displayProduct()
+
+
  
+let numberProductsIcon= document.querySelectorAll('#list-products ')
+let arrayItems=localStorage.getItem('arrayItems') ? JSON.parse(localStorage.getItem('arrayItems')) :[]
+
+if(arrayItems){
+    
+    let listProductsBag=document.querySelector('#list-products div')
+    arrayItems.map((item)=>{ 
+    
+        listProductsBag.innerHTML += `<p> ${item.title} </p>`
+    })
+      
+    let numberProductsInBag= document.querySelectorAll('#list-products div p')
+    let badgeNotification= document.querySelector('#badge')
+    badgeNotification.style.display='block'
+    badgeNotification.innerHTML= numberProductsInBag.length 
+}
+
 function addedToCart(id){
-   console.log(id)
+    if(localStorage.getItem("username")){
+console.log(id)
     let choosenItem  = products.find( (item)=> item.id == id)
+
+    arrayItems=[...arrayItems,choosenItem]
+    console.log(arrayItems);
     console.log(choosenItem );
+    localStorage.setItem("arrayItems",JSON.stringify(arrayItems))
     let listProductsBag=document.querySelector('#list-products div')
 
     listProductsBag.innerHTML += `<p> ${choosenItem.title} </p>`
     let numberProductsInBag= document.querySelectorAll('#list-products div p')
     let badgeNotification= document.querySelector('#badge')
+    badgeNotification.style.display='block'
     badgeNotification.innerHTML= numberProductsInBag.length 
+    }else{
+        window.location("login.html")
+    }
+   
+    
      
 } 
 
@@ -94,13 +86,17 @@ function checkloginUser(){
 }
 cartShopping.addEventListener('click',(e)=>{
 e.preventDefault()
- 
+ openCartmenu()
  
 
 
-    if(listProducts.style.display=="block")
-{listProducts.style.display="none"}
-else{
-    listProducts.style.display="block"
-}
+    
 })
+
+ function openCartmenu(){
+    if(listProducts.style.display=="block")
+    {listProducts.style.display="none"}
+    else{
+        listProducts.style.display="block"
+    }
+ }
